@@ -12,18 +12,29 @@ def guardar_tablero(lista, file):
     file.write(str(lista))
     file.close
 
+def mover_ficha(fila_ficha, columna_ficha, fila_casilla, columna_casilla):
+    print(tablero[fila_ficha][columna_ficha])
+    tablero[fila_ficha][columna_ficha] = tablero[fila_casilla][columna_casilla]
+    print(tablero[fila_casilla][columna_casilla])
+    tablero[fila_ficha][columna_ficha] = ' '
+    print(tablero[fila_ficha][columna_ficha])
 
-print("¿Como quieres que se llame el fichero?")
-fichero = input()
-guardar_tablero(tablero, fichero)
-print("tu archivo ha sido creado.\n¿Quieres mover o acabar la partida?")
-decision = input()
-if decision == 'mover':
-    print("Dime la fila y la columna de la pieza que quieres mover. Ten en cuenta los 0")
-    fila_ficha = input()
-    columna_ficha = input()
-    print("Ahora dime a que casilla la quieres mover")
-    fila_casilla = input()
-    columna_casilla = input()
-    mover_ficha()
-    guardar_tablero()
+#print("¿Como quieres que se llame el fichero?")
+#fichero = input()
+#guardar_tablero(tablero, fichero)
+#print("tu archivo ha sido creado.\n¿Quieres mover o acabar la partida?")
+#decision = input()
+#if decision == 'mover':
+ #   print("Dime la fila y la columna de la pieza que quieres mover. Ten en cuenta los 0")
+  #  fila_ficha = input()
+   # columna_ficha = input()
+    #print("Ahora dime a que casilla la quieres mover")
+    #fila_casilla = input()
+    #columna_casilla = input()
+    #mover_ficha()
+    #guardar_tablero()
+fila_ficha = 1
+columna_ficha = 1
+fila_casilla = 1
+columna_casilla = 2
+mover_ficha(fila_ficha, columna_ficha, fila_casilla, columna_ficha)
