@@ -8,10 +8,22 @@ tablero = [['TN1', 'CN1', 'AN1', 'RN', 'RYN', 'AN2', 'CN2', 'TN2' ],
            ['TB1', 'CB1', 'AB1', 'RB', 'RYB', 'AB2', 'CB2', 'TB2',]]
 
 def guardar_tablero(lista, file):
-    file = open(file, "w")
+    file = open(file + '.txt', "w")
     file.write(str(lista))
     file.close
+
 
 print("¿Como quieres que se llame el fichero?")
 fichero = input()
 guardar_tablero(tablero, fichero)
+print("tu archivo ha sido creado.\n¿Quieres mover o acabar la partida?")
+decision = input()
+if decision == 'mover':
+    print("Dime la fila y la columna de la pieza que quieres mover. Ten en cuenta los 0")
+    fila_ficha = input()
+    columna_ficha = input()
+    print("Ahora dime a que casilla la quieres mover")
+    fila_casilla = input()
+    columna_casilla = input()
+    mover_ficha()
+    guardar_tablero()
