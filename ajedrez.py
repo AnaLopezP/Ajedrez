@@ -20,13 +20,14 @@ def guardar_tablero(lista, file):
 def mover_ficha(fila_ficha, columna_ficha, fila_casilla, columna_casilla):
     tablero[int(fila_casilla)][int(columna_casilla)] = tablero[int(fila_ficha)][int(columna_ficha)]
     tablero[int(fila_ficha)][int(columna_ficha)] = ' '
-
+    
+contador = 0
 print("¿Como quieres que se llame el fichero?")
 fichero = input()
 guardar_tablero(tablero, fichero)
 print("tu archivo ha sido creado.\n¿Quieres mover o acabar la partida?")
 decision = input()
-if decision == 'mover':
+while decision == 'mover':
     print("Dime la fila y la columna de la pieza que quieres mover. Ten en cuenta los 0")
     fila_ficha = input()
     columna_ficha = input()
@@ -34,4 +35,9 @@ if decision == 'mover':
     fila_casilla = input()
     columna_casilla = input()
     mover_ficha(fila_ficha, columna_ficha, fila_casilla, columna_casilla)
-    guardar_tablero(tablero, fichero)
+    contador = contador + 1
+    movimiento = 'movimiento' + str(contador)
+    guardar_tablero(tablero, movimiento)
+    print("¿Qué quiere hacer ahora")
+    decision = input()
+print("Tu partida ha acabado, gracias por jugar.")
