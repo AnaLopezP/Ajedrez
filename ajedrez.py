@@ -18,14 +18,12 @@ def guardar_tablero(lista, file, contador):
                 file.write(str(lista[i][j]) + '\n')
             else:
                 file.write(str(lista[i][j]) + '\t')
-    
+                
     
 
 def mover_ficha(fila_ficha, columna_ficha, fila_casilla, columna_casilla):
     tablero[int(fila_casilla)][int(columna_casilla)] = tablero[int(fila_ficha)][int(columna_ficha)]
     tablero[int(fila_ficha)][int(columna_ficha)] = ' '
-
-
 
 print("¿Como quieres que se llame el fichero?")
 fichero = input()
@@ -44,7 +42,41 @@ while decision == 'mover':
     guardar_tablero(tablero, fichero, contador)
     print("¿Qué quiere hacer ahora?")
     decision = input()
+    movimiento = 'Movimiento' + str(contador)
+    guardar_tablero(tablero, movimiento, contador)
 print("Tu partida ha acabado, gracias por jugar.")
 
-print("¿Qué movimiento quieres ver en pantalla?")
+
+print("¿que movimiento quieres ver en pantalla? Dime el numero")
+movimiento = input()
+movimiento_str = "Movimiento " + str(movimiento) + "\n"
+print("El movimiento que has pedido es: " + str(movimiento_str))
+
+file = open(fichero + ".txt", "r")
+linea = file.readline()
+
+solucion = []
+he_terminado = False
+guardar = False
+primeravez = False
+while linea != "":
+    if (linea == movimiento_str):
+        guardar = True
+        primeravez = True
+    if guardar == True:
+        solucion.append(linea)
+    if linea.rfind("Movimiento") != -1 and primeravez == False:
+        guardar = False
+    primeravez = False     
+    linea = file.readline()
+
+
+for i in range(len(solucion)):
+    print(solucion[i])
+
+# Otra manera de print el movimiento: uso los nuevos archivos llamados movimiento1/2... e imprimo su contenido.
+#print("¿Qué movimiento quieres ver en pantalla? Dime el numero.")
+#movimiento = input()
+#file = open('Movimiento' + str(movimiento) + ".txt", "r")
+#print(file.read())
 
